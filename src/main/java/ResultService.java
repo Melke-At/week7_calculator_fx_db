@@ -57,6 +57,7 @@ public class ResultService {
 
             System.out.println("✅ Result saved: " + n1 + ", " + n2 + " → Sum=" + sum + ", Product=" + product);
 
+
         } catch (SQLException e) {
             System.err.println("❌ Failed to save result to DB: " + dbUrl);
             e.printStackTrace();
