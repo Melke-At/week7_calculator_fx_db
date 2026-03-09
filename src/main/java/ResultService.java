@@ -4,7 +4,7 @@ public class ResultService {
 
     private static final String DB_NAME = "calc_data";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "Test12";
+    private static final String DB_PASSWORD = "password";
 
     // Load MariaDB driver
     static {
@@ -62,5 +62,9 @@ public class ResultService {
             System.err.println("❌ Failed to save result to DB: " + dbUrl);
             e.printStackTrace();
         }
+    }
+
+    public static void saveResult(double num1, double num2, double sum, double product, double subtraction, double division) {
+
     }
 }
