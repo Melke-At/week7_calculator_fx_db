@@ -5,12 +5,15 @@ import javafx.scene.control.TextField;
 
 public class CalculatorController {
 
-    @FXML private TextField number1Field;
-    @FXML private TextField number2Field;
-    @FXML private Label resultLabel;
+    @FXML
+    TextField number1Field;
+    @FXML
+    TextField number2Field;
+    @FXML
+    Label resultLabel;
 
     @FXML
-    private void onCalculateClick() {
+    void onCalculateClick() {
         try {
             double num1 = Double.parseDouble(number1Field.getText());
             double num2 = Double.parseDouble(number2Field.getText());
