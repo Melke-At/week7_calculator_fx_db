@@ -8,7 +8,7 @@ pipeline {
     environment {
         PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
         DOCKERHUB_CREDENTIALS_ID = 'Docker_Hub'
-        DOCKERHUB_REPO = 'melkamuy/melke_tempreture_v1'
+        DOCKERHUB_REPO = 'melkamuy/sum-product_fx:latest'
         DOCKER_IMAGE_TAG = 'latest'
     }
 
@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                        url: 'https://github.com/Melke-At/Melke_Tempreture_V1.git'
+                        url: 'https://github.com/Melke-At/week7_calculator_fx_db'
             }
         }
 
