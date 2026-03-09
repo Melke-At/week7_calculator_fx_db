@@ -8,7 +8,7 @@ pipeline {
     environment {
         PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
         DOCKERHUB_CREDENTIALS_ID = 'Docker_Hub'
-        DOCKERHUB_REPO = 'melkamuy/sum-product_fx:latest'
+        DOCKERHUB_REPO = 'melkamuy/sum-product_fx'
         DOCKER_IMAGE_TAG = 'latest'
     }
 
@@ -39,13 +39,13 @@ pipeline {
             }
         }
 
-        stage('Publish Coverage Report') {
-            steps {
-                jacoco()
-            }
-        }
+        // ✅ Removed the `jacoco()` step to avoid plugin error
+        // stage('Publish Coverage Report') {
+        //     steps {
+        //         jacoco()
+        //     }
+        // }
 
-        // ✅ IMPORTANT FIX: This creates the JAR file
         stage('Package') {
             steps {
                 bat 'mvn clean package -DskipTests'
