@@ -14,6 +14,7 @@ pipeline {
 
     stages {
 
+        // 1️⃣ Checkout the repository
         stage('Checkout') {
             steps {
                 git branch: 'main',
@@ -21,37 +22,28 @@ pipeline {
             }
         }
 
+        // 2️⃣ Run unit tests
         stage('Run Tests') {
             steps {
                 bat 'mvn clean test'
             }
         }
 
-        stage('Code Coverage') {
-            steps {
-                bat 'mvn jacoco:report'
-            }
-        }
-
+        // 3️⃣ Publish test results
         stage('Publish Test Results') {
             steps {
                 junit '**/target/surefire-reports/*.xml'
             }
         }
 
-        // ✅ Removed the `jacoco()` step to avoid plugin error
-        // stage('Publish Coverage Report') {
-        //     steps {
-        //         jacoco()
-        //     }
-        // }
-
+        // 4️⃣ Package the application into a JAR
         stage('Package') {
             steps {
                 bat 'mvn clean package -DskipTests'
             }
         }
 
+        // 5️⃣ Build Docker image
         stage('Build Docker Image') {
             steps {
                 script {
@@ -60,6 +52,7 @@ pipeline {
             }
         }
 
+        // 6️⃣ Push Docker image to Docker Hub
         stage('Push Docker Image to Docker Hub') {
             steps {
                 script {
